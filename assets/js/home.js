@@ -14,7 +14,7 @@ document.forms["aricoleForm"].addEventListener("submit", function (e) {
     name: nomeArticolo.value,
     description: description.value,
     brand: brand.value,
-    imgUrl: imgUrl.value,
+    imageUrl: imgUrl.value,
     price: price.value,
   };
   fetch(URLPost, {
@@ -22,6 +22,7 @@ document.forms["aricoleForm"].addEventListener("submit", function (e) {
     body: JSON.stringify(newArticole),
     headers: {
       Authorization: "Bearer " + apiKay,
+      "Content-Type": "application/json",
     },
   });
 });
