@@ -23,15 +23,20 @@ fetch(URLGet, {
   .then((articols) => {
     console.log("dati ricevuti:", articols);
     const containerProducts = document.getElementById("containerProducts");
+    containerProducts.className = "d-flex";
     articols.forEach((product) => {
       // CARD DEI PRODOTTI
       const productCard = document.createElement("div");
-      productCard.className = ("card", "w-25");
+      productCard.className = ("card", "w-25", "col");
+
+      productCard.addEventListener("click", (event) => {
+        cl(event.target);
+      });
 
       // ARTICOLE IMG
       const articoleImg = document.createElement("img");
       articoleImg.src = product.imageUrl;
-      articoleImg.className = "card-img-top";
+      articoleImg.className = "card-img-top w-75";
 
       // CARD BODY
       const cardBody = document.createElement("div");
@@ -39,37 +44,30 @@ fetch(URLGet, {
 
       // BRAND
       const brand = document.createElement("h5");
-      brand.className = "card-text";
       brand.innerText = `Brand: ${product.brand}`;
 
       // DATE OF CREATION
       const dateOfCreation = document.createElement("p");
-      dateOfCreation.className = "card-text";
       dateOfCreation.innerText = `Created at: ${new Date(product.createdAt).toLocaleString()}`;
 
       // DESCRIZIONE DEL PRODOTTO
       const descriptionProduct = document.createElement("p");
-      descriptionProduct.className = "card-text";
       descriptionProduct.innerText = product.description;
 
       // NOME DEL PRODOTTO
       const productName = document.createElement("h5");
-      productName.className = "card-title";
       productName.innerText = product.name;
 
       // PREZZO
       const price = document.createElement("p");
-      price.className = "card-text";
       price.innerText = `Price: €${product.price}`;
 
       // ID_PRODUCT
       const idProduct = document.createElement("p");
-      idProduct.className = "card-text";
       idProduct.innerText = `ID: ${product._id}`;
 
       // DATE OF UPDATE
       const upDitesProduct = document.createElement("p");
-      upDitesProduct.className = "card-text";
       upDitesProduct.innerText = `Updated at: ${new Date(product.updatedAt).toLocaleString()}`;
 
       // USER ID
