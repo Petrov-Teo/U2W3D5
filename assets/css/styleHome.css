@@ -1,0 +1,9 @@
+.popUp {
+  display: none;
+  width: 320px;
+  top: 50%;
+  right: 50%;
+  left: 50%;
+  bottom: 50%;
+  background-color: blue;
+}

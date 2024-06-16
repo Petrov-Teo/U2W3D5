@@ -10,10 +10,15 @@
 </head>
 
 <body>
-    <div class="container px-4 pb-5 bg-body-dark">
+    <!-- MAIN CONTAINER -->
+
+    <div class="container px-4 pb-5 bg-body-dark position-relative">
+
+        <!--––––––––––––––––––– NAVBAR -->
+
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">CRUDAZON</a>
+                <a class="navbar-brand" href="./home.html">CRUDAZON</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +52,7 @@
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <button lass="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
             </div>
@@ -58,7 +63,12 @@
         <br>
         <div id="errorMsg"></div>
         <section class="d-flex justify-content-center">
-            <form class="w-50 pt-3" name="aricoleForm">
+
+
+            <!--FORM -->
+
+
+            <form class="w-50 pt-3 z-2" name="aricoleForm">
                 <div class="mb-3">
                     <label for="nomeArticolo" class="form-label">Nome Articolo</label>
                     <input type="text" class="form-control" id="nomeArticolo" placeholder="Nome del tuo articolo"
@@ -89,13 +99,12 @@
                     <label for="price" class="form-label">Prezzo (Es. &euro; 32,50)</label>
                     <input type="number" class="form-control" id="price" placeholder="&euro;" step="0.10" min="0">
                 </div>
-
                 <div class="pt-3">
                     <button class="btn btn-primary pt-" type="submit">Salva Artiolo</button>
                 </div>
-
             </form>
         </section>
+
     </div>
 
 
@@ -103,7 +112,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <script src="./assets/js/home.js"></script>
+    <script src="./assets/js/backend.js"></script>
 </body>
 
 </html>
