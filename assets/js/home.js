@@ -8,6 +8,8 @@ const cl = function (cl) {
 
 const h1 = document.getElementsByTagName("h1")[0];
 
+const moreInfoDiv = document.getElementById("moreInfoDiv");
+
 fetch(URLGet, {
   headers: {
     Authorization: "Bearer " + apiKey,
@@ -23,24 +25,21 @@ fetch(URLGet, {
   .then((articols) => {
     console.log("dati ricevuti:", articols);
     const containerProducts = document.getElementById("containerProducts");
-    containerProducts.className = "d-flex";
+    containerProducts.className = ("d-flex", "col-12", "row");
     articols.forEach((product) => {
       // CARD DEI PRODOTTI
       const productCard = document.createElement("div");
-      productCard.className = ("card", "w-25", "col");
-
-      productCard.addEventListener("click", (event) => {
-        cl(event.target);
-      });
+      productCard.className = ("card", "w-50", "col");
 
       // ARTICOLE IMG
       const articoleImg = document.createElement("img");
       articoleImg.src = product.imageUrl;
-      articoleImg.className = "card-img-top w-75";
+      articoleImg.className = "card-img-top w-100";
+      articoleImg.style.maxWidth = "200px";
 
       // CARD BODY
       const cardBody = document.createElement("div");
-      cardBody.className = "card-body";
+      (cardBody.className = "card-body"), (style = "width: 18rem;");
 
       // BRAND
       const brand = document.createElement("h5");
@@ -73,21 +72,29 @@ fetch(URLGet, {
       // USER ID
       const userId = product.userId;
       h1.innerText = `Welcome User ${userId}`;
+      h1.classList.add("colorh1");
+
+      // PUSANTE MORE NFO
+      const moreInfo = document.createElement("button");
+      moreInfo.innerText = "More Info";
+      moreInfo.classList.add("btnMoreInfo");
 
       cardBody.appendChild(idProduct);
       cardBody.appendChild(brand);
       cardBody.appendChild(productName);
-      cardBody.appendChild(descriptionProduct);
       cardBody.appendChild(price);
-      cardBody.appendChild(dateOfCreation);
-      cardBody.appendChild(upDitesProduct);
-
+      cardBody.appendChild(moreInfo);
       productCard.appendChild(articoleImg);
       productCard.appendChild(cardBody);
-
       containerProducts.appendChild(productCard);
+
+      moreInfo.addEventListener("click", (event) => {
+        const detail = document.createElement("a");
+        event.detail.href = `./detail.html/?${idProduct}`;
+      });
     });
   })
+
   .catch((error) => {
     console.log("Si è verificato un errore!", error);
   });
