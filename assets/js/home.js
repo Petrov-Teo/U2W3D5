@@ -29,7 +29,7 @@ fetch(URLGet, {
     articols.forEach((product) => {
       // CARD DEI PRODOTTI
       const productCard = document.createElement("div");
-      productCard.className = ("card", "w-50", "col");
+      productCard.className = ("card", "w-50", "col-3");
 
       // ARTICOLE IMG
       const articoleImg = document.createElement("img");
