@@ -26,16 +26,18 @@ fetch(URLGet, {
     console.log("dati ricevuti:", articols);
     const containerProducts = document.getElementById("containerProducts");
     containerProducts.className = ("d-flex", "col-12", "row");
+    containerProducts.classList.add("containerDiv", "d-flex", "justify-content-between");
     articols.forEach((product) => {
       // CARD DEI PRODOTTI
       const productCard = document.createElement("div");
       productCard.className = ("card", "w-50", "col-3");
+      productCard.classList.add("divCard");
 
       // ARTICOLE IMG
       const articoleImg = document.createElement("img");
       articoleImg.src = product.imageUrl;
-      articoleImg.className = "card-img-top w-100";
-      articoleImg.style.maxWidth = "200px";
+      articoleImg.className = "card-img-top";
+      articoleImg.classList.add("imgCard");
 
       // CARD BODY
       const cardBody = document.createElement("div");
@@ -57,9 +59,9 @@ fetch(URLGet, {
       const productName = document.createElement("h5");
       productName.innerText = product.name;
 
-      // PREZZO
+      // PRICE
       const price = document.createElement("p");
-      price.innerText = `Price: €${product.price}`;
+      price.innerText = `Price: € ${product.price}`;
 
       // ID_PRODUCT
       const idProduct = document.createElement("p");
@@ -79,18 +81,21 @@ fetch(URLGet, {
       moreInfo.innerText = "More Info";
       moreInfo.classList.add("btnMoreInfo");
 
+      cardBody.appendChild(moreInfo);
       cardBody.appendChild(idProduct);
       cardBody.appendChild(brand);
       cardBody.appendChild(productName);
       cardBody.appendChild(price);
-      cardBody.appendChild(moreInfo);
       productCard.appendChild(articoleImg);
       productCard.appendChild(cardBody);
       containerProducts.appendChild(productCard);
 
       moreInfo.addEventListener("click", (event) => {
-        const detail = document.createElement("a");
-        event.detail.href = `./detail.html/?${idProduct}`;
+        event.preventDefault();
+        const linkMoreInfo = document.createElement("a");
+        linkMoreInfo.href = `./detail.html?productId=${product._id}`;
+        moreInfo.appendChild(linkMoreInfo);
+        window.open(linkMoreInfo);
       });
     });
   })
